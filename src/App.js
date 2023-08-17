@@ -11,9 +11,14 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newPerson = { name: newName }
-    setPersons([...persons, newPerson])
-    setNewName('') // Clear the input field
+    if (!persons.includes(newName)) {
+       alert(`${newName} is already added to the list`)
+    } else  {
+
+      const newPerson = { name: newName }
+      setPersons([...persons, newPerson])
+      setNewName('') // Clear the input field
+    }
   }
 
   return (
@@ -32,7 +37,6 @@ const App = () => {
       <h2>Numbers</h2>
 
       <div>
-        debug:
         {persons.map((person, index) => (
           <div key={index}>{person.name}</div>
         ))}
