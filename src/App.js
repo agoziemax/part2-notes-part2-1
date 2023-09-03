@@ -10,8 +10,9 @@ const App = () => {
   }
 
   const handleSubmit = (e) => {
+    const nameExists = persons.some((item) => item.name === newName)
     e.preventDefault()
-    if (!persons.includes(newName)) {
+    if (nameExists) {
        alert(`${newName} is already added to the list`)
     } else  {
 
@@ -20,13 +21,18 @@ const App = () => {
       setNewName('') // Clear the input field
     }
   }
-
   return (
     <div className="container">
       <h2>Phonebook</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          name: <input value={newName} onChange={handleChange} />
+          name:{' '}
+          <input
+            type="text"
+            placeholder="Enter a name"
+            value={newName}
+            onChange={handleChange}
+          />
         </div>
         <div>
           <button className="btn bg-primary" type="submit">
