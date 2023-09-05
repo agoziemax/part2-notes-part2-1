@@ -13,11 +13,10 @@ const App = () => {
   const [nameSearch, setNameSearch] = useState('')
 
   const handleSearch = (e) => {
-    const nameExists = persons.some((item) => item.name === nameSearch)
-
-    
     setNameSearch(e.target.value)
   }
+
+
   const handleChange = (e) => {
     setNewName(e.target.value)
   }
@@ -34,6 +33,10 @@ const App = () => {
       setNewName('') // Clear the input field
     }
   }
+
+   const filteredPersons = persons.filter((person) =>
+     person.name.toLowerCase().includes(nameSearch.toLowerCase())
+   )
   return (
     <div className="container">
       <h2>Phonebook Entry</h2>
@@ -77,8 +80,11 @@ const App = () => {
       <h2>Phonebook List</h2>
 
       <div>
-        {persons.map((person, index) => (
+        {/* {persons.map((person, index) => (
           <div key={index}>{`${person.name} ${person.phone}`}</div>
+        ))} */}
+        {filteredPersons.map((person) => (
+          <div key={person.id}>{`${person.name} ${person.phone}`}</div>
         ))}
       </div>
     </div>
