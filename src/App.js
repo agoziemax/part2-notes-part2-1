@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 const App = () => {
@@ -11,6 +11,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [phone, setPhone] = useState('')
   const [nameSearch, setNameSearch] = useState('')
+   const [counter, setCounter] = useState(0)
 
   const handleSearch = (e) => {
     setNameSearch(e.target.value)
@@ -37,6 +38,7 @@ const App = () => {
    const filteredPersons = persons.filter((person) =>
      person.name.toLowerCase().includes(nameSearch.toLowerCase())
    )
+  
   return (
     <div className="container">
       <h2>Phonebook Entry</h2>
