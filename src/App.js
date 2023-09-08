@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+import Filter from './components/Filter'
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas', phone: '040-123456', id: 1 },
@@ -38,19 +39,12 @@ const App = () => {
    const filteredPersons = persons.filter((person) =>
      person.name.toLowerCase().includes(nameSearch.toLowerCase())
    )
-  
+
   return (
     <div className="container">
       <h2>Phonebook Entry</h2>
-      <div className="mb-5 mt-3">
-        filter names:{' '}
-        <input
-          type="text"
-          placeholder="search for names"
-          value={nameSearch}
-          onChange={handleSearch}
-        />
-      </div>
+
+      <Filter value={nameSearch} onChange={handleSearch}/>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
