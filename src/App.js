@@ -69,7 +69,7 @@ const App = () => {
         </div>
         <div>
           <button className="btn bg-primary mb-3" type="submit">
-            add
+            Add to list
           </button>
         </div>
       </form>
